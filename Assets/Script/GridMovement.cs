@@ -7,7 +7,7 @@ public class GridMovement : MonoBehaviour
     void Update()
     {
         zInput = Input.GetAxisRaw("Horizontal");
-        yInput = Input.GetAxisRaw("Vertical");
+        xInput = Input.GetAxisRaw("Vertical");
         if (zInput != 0 || xInput != 0)
         {
             CalculateTargetPosition();
