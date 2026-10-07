@@ -5,7 +5,7 @@ public class CrossyCamera : MonoBehaviour
     public Transform player;          // Arrastra aquí el objeto del jugador
     public Vector3 offset;            // Distancia fija entre la cámara y el jugador
     public float scrollSpeed = 2f;    // Velocidad a la que avanza la cámara automáticamente
-
+     
     void Start()
     {
         if (player != null)
