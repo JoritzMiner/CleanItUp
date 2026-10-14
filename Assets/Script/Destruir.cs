@@ -7,7 +7,7 @@ public class Example : MonoBehaviour
     public float scrollSpeed = 2f;    // Velocidad a la que avanza la cámara automáticamente
                                       // Start is called once before the first execution of Update after the MonoBehaviour is created
     private Vector3 posicionInicial;
-  
+
 
     // Update is called once per frame
     private void Start()
@@ -18,7 +18,7 @@ public class Example : MonoBehaviour
     private void Update()
     {
         gaviota_Transform.position += Vector3.left * scrollSpeed * Time.deltaTime;
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,7 +26,7 @@ public class Example : MonoBehaviour
         if (other.gameObject.tag == "Pared")
         {
             transform.position = posicionInicial;
-           
+
         }
     }
 }

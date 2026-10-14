@@ -2,10 +2,15 @@ using UnityEngine;
 
 public class CrossyCamera : MonoBehaviour
 {
+   
+
+  
     public Transform player;          // Arrastra aquí el objeto del jugador
     public Vector3 offset;            // Distancia fija entre la cámara y el jugador
     public float scrollSpeed = 2f;    // Velocidad a la que avanza la cámara automáticamente
-     
+
+    public float posicionX;
+
     void Start()
     {
         if (player != null)
@@ -13,27 +18,36 @@ public class CrossyCamera : MonoBehaviour
             // Calcula la distancia inicial si no se asigna manualmente en el inspector
             offset = transform.position - player.position;
         }
+
+    
     }
+
 
     void LateUpdate()
     {
-        // Mueve la cámara hacia adelante constantemente en el eje Z (o el que prefieras)
+  
         transform.position += Vector3.right * scrollSpeed * Time.deltaTime;
+     
+    }
 
-        // Opcional: Si quieres que también siga al jugador lateralmente (eje X)
-        if (player != null)
+
+    void Update()
+    {
+       posicionX = player.transform.position.x;
+
+        if (posicionX <= this.transform.position.x + 0.75)
         {
-            Vector3 targetPosition = transform.position;
-            targetPosition.x = player.position.x + offset.x;
-
-            // Mantiene el límite inferior para que la cámara no retroceda
-            if (player.position.z + offset.z > transform.position.z)
-            {
-                targetPosition.z = player.position.z + offset.z;
-            }
-
-            transform.position = targetPosition;
+            
+            scrollSpeed = 0;
         }
+
+        else if (posicionX >= this.transform.position.x + 21)
+        {
+            
+            scrollSpeed = 0;
+        }
+
+
     }
 }
 
