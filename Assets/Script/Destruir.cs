@@ -17,7 +17,7 @@ public class Example : MonoBehaviour
     }
     private void Update()
     {
-        gaviota_Transform.position += Vector3.left * scrollSpeed * Time.deltaTime;
+        gaviota_Transform.position += Vector3.forward * scrollSpeed * Time.deltaTime;
 
     }
 
@@ -28,5 +28,13 @@ public class Example : MonoBehaviour
             transform.position = posicionInicial;
 
         }
+
+        if (other.gameObject.tag == "Player")
+        {
+            Time.timeScale = 0;
+
+        }
     }
+
+
 }

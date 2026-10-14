@@ -37,14 +37,14 @@ public class CrossyCamera : MonoBehaviour
 
         if (posicionX <= this.transform.position.x + 0.75)
         {
-            
-            scrollSpeed = 0;
+
+            Time.timeScale = 0;
         }
 
         else if (posicionX >= this.transform.position.x + 21)
         {
-            
-            scrollSpeed = 0;
+
+            Time.timeScale = 0;
         }
 
 
