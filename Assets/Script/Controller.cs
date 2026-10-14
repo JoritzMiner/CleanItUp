@@ -8,18 +8,28 @@ public class Controller : MonoBehaviour
     public float MovementHorizontal = 1.2f;
     public float MovementVertical = 1.7f;
 
+    public bool MAdelante = true;
+    public bool MAtras = true;
+    public bool MDerecha = true;
+    public bool MIzquierda = true;
     public Rigidbody rb;
 
     private bool noHayPared = true; //si hay pared = false, si no hay pared = true
     private bool enMovimiento = false; //si se mueve el player = true , si no se mueve = false
-
+    private void Start()
+    {
+        MIzquierda = true;
+        MAdelante = true;
+        MAtras = true;
+        MDerecha = true;
+    }
     private void FixedUpdate()
     {
         
     }
     public void OnLeft(InputValue input)
     {
-        if (input.isPressed)
+        if (input.isPressed && MIzquierda)
         {
             StartCoroutine(MovimientoSmooth(0f, MovementHorizontal));
         }
@@ -30,7 +40,7 @@ public class Controller : MonoBehaviour
     public void OnRigth(InputValue input)
     {
 
-        if (input.isPressed)
+        if (input.isPressed && MDerecha)
         {
             StartCoroutine(MovimientoSmooth(0f, -MovementHorizontal));
         }
@@ -42,7 +52,7 @@ public class Controller : MonoBehaviour
     }
     public void OnFordward(InputValue input)
     {
-        if (input.isPressed)
+        if (input.isPressed && MAdelante)
         {
             StartCoroutine(MovimientoSmooth(MovementVertical, 0));
         }
@@ -53,7 +63,7 @@ public class Controller : MonoBehaviour
     public void OnBackwards(InputValue input)
     {
 
-        if (input.isPressed)
+        if (input.isPressed && MAtras)
         {
             StartCoroutine(MovimientoSmooth(-MovementVertical, 0));
         }
