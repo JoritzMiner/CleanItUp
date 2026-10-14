@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 public class Controller : MonoBehaviour
 {
     public Transform player;
-    public float MovementHorizontal = 1.2f;
-    public float MovementVertical = 1.7f;
+    public float MovementHorizontal = 1f;
+    public float MovementVertical = 1f;
 
     public bool MAdelante = true;
     public bool MAtras = true;
