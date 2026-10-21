@@ -8585,9 +8585,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a44d4232eb3e44c804dd958e5d9037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManagerPuntuacion
-  pointsText: {fileID: 0}
+  pointsText: {fileID: 1707183794}
   points: 0
-  isCounting: 0
+  player: {fileID: 1451570998}
 --- !u!4 &228792345
 Transform:
   m_ObjectHideFlags: 0
@@ -46554,7 +46554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Controller
   player: {fileID: 1451570998}
   MovementHorizontal: 1.2
-  MovementVertical: 1.7
+  MovementVertical: 1.5
   MAdelante: 1
   MAtras: 1
   MDerecha: 1
@@ -59852,7 +59852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManagerPuntuacion
   pointsText: {fileID: 1707183794}
   points: 0
-  isCounting: 0
+  player: {fileID: 0}
 --- !u!1 &1956572057
 GameObject:
   m_ObjectHideFlags: 0

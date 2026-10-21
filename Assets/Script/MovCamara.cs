@@ -33,7 +33,7 @@ public class CrossyCamera : MonoBehaviour
 
     void Update()
     {
-       posicionX = player.transform.position.x;
+        posicionX = player.transform.position.x;
 
         if (posicionX <= this.transform.position.x + 0.75)
         {

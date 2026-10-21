@@ -8,7 +8,7 @@ public class GameManagerPuntuacion : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public TMP_Text pointsText;
     public int points = 0;
-    public Transform player;
+    public Transform Player;
 
 
     private void Start()
@@ -18,7 +18,18 @@ public class GameManagerPuntuacion : MonoBehaviour
     }
     void Update()
     {
-        
+        if(Player.transform.position.x >= 0)
+        {
+            AnadirPuntos();
+        }
+    }
+
+    public void AnadirPuntos()
+    {
+       
+        double puntos = Player.transform.position.x / 1.44083;
+
+        Debug.Log(puntos);
     }
 }
     //IEnumerator CountScore()

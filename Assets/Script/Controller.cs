@@ -6,7 +6,7 @@ public class Controller : MonoBehaviour
 {
     public Transform player;
     public float MovementHorizontal = 1.2f;
-    public float MovementVertical = 1.7f;
+    public float MovementVertical = 1.5f;
 
     public bool MAdelante = true;
     public bool MAtras = true;
