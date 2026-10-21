@@ -4,33 +4,52 @@ using System.Collections.Generic;
 
 public class SpawnFilaController : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject[] FilasPosibles = new GameObject[3];
+    private Dictionary<GameObject,Queue<GameObject>> pools = new Dictionary<GameObject, Queue<GameObject>>();
 
-    public Queue<GameObject> pool = new Queue<GameObject>();
+    public GameObject InicioPrefab;
 
-    private int ran;
+    public GameObject GrassPrefab;
+    public GameObject WaterPrefab;
+    public GameObject RoadPrefab;
 
-    public GameObject GetObject()
+    private void Start()
     {
-        if(pool.Count > 0 && pool.Count < 17)
+        CreatePool(InicioPrefab, 1);
+        CreatePool(GrassPrefab, 14);
+        CreatePool(WaterPrefab, 6);
+        CreatePool(RoadPrefab, 8);
+    }
+    private void CreatePool(GameObject prefab, int poolSize)
+    {
+        Queue<GameObject> newPool = new Queue<GameObject>();
+        for (int i = 0; i < poolSize; i++)
+        {
+            GameObject obj = Instantiate(prefab, transform);
+            obj.GetComponent<PrefabIdentifier>().SetPrefab(prefab);
+            obj.SetActive(false);
+            newPool.Enqueue(obj);
+        }
+        pools[prefab] = newPool;
+    }
+
+    public void ActivateObject(GameObject prefab, Vector3 position)
+    {
+        Queue<GameObject> pool = pools[prefab];
+        //Debug.Log("009"+pool.Count);
+
+        if (pool.Count > 0)
         {
             GameObject obj = pool.Dequeue();
             obj.SetActive(true);
-            return obj;
+            obj.transform.position = position;
         }
-        return Instantiate(RandomizarTiles());
     }
 
-    public void ReturnObject(GameObject obj)
+    public void RemoveObject(GameObject obj)
     {
+        //Debug.LogError("010");
+
         obj.SetActive(false);
-        pool.Enqueue(obj);
-    }
-
-    private GameObject RandomizarTiles()
-    {
-        ran = Random.Range(0, 3);
-        return FilasPosibles[ran];
+        pools[obj.GetComponent<PrefabIdentifier>().prefab].Enqueue(obj);
     }
 }
