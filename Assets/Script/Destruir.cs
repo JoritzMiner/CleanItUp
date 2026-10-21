@@ -25,7 +25,12 @@ public class Example : MonoBehaviour
     {
         if (other.gameObject.tag == "Pared")
         {
-            transform.position = posicionInicial;
+            scrollSpeed = 0f;
+
+           if (GameManager.Instance != null)
+            {
+                GameManager.Instance.GameOver();
+            }
            
         }
     }
