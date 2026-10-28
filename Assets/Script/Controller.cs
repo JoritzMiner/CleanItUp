@@ -1,13 +1,22 @@
 using System.Collections;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Controller : MonoBehaviour
 {
     public Transform player;
-    public float MovementHorizontal = 1.2f;
-    public float MovementVertical = 1.7f;
+    public float MovementHorizontal = 1f;
+    public float MovementVertical = 1.5f;
 
+    private GameManager gameManager;
+    public enum GameState
+    {
+        Ready,
+        Moving,
+        Dead
+    }
+    private GameState gameState;
     public bool MAdelante = true;
     public bool MAtras = true;
     public bool MDerecha = true;
@@ -27,9 +36,14 @@ public class Controller : MonoBehaviour
     {
         
     }
+    public void CheckState(GameState gameState)
+    {
+        this.gameState = gameState;
+    }
     public void OnLeft(InputValue input)
     {
-        if (input.isPressed && MIzquierda)
+       
+        if (input.isPressed && MIzquierda && gameState==GameState.Ready)
         {
             StartCoroutine(MovimientoSmooth(0f, MovementHorizontal));
         }
@@ -40,7 +54,7 @@ public class Controller : MonoBehaviour
     public void OnRigth(InputValue input)
     {
 
-        if (input.isPressed && MDerecha)
+        if (input.isPressed && MDerecha && gameState == GameState.Ready)
         {
             StartCoroutine(MovimientoSmooth(0f, -MovementHorizontal));
         }
@@ -52,7 +66,7 @@ public class Controller : MonoBehaviour
     }
     public void OnFordward(InputValue input)
     {
-        if (input.isPressed && MAdelante)
+        if (input.isPressed && MAdelante && gameState == GameState.Ready)
         {
             StartCoroutine(MovimientoSmooth(MovementVertical, 0));
         }
@@ -63,7 +77,7 @@ public class Controller : MonoBehaviour
     public void OnBackwards(InputValue input)
     {
 
-        if (input.isPressed && MAtras)
+        if (input.isPressed && MAtras && gameState == GameState.Ready)
         {
             StartCoroutine(MovimientoSmooth(-MovementVertical, 0));
         }

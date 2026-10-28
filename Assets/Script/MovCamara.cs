@@ -18,7 +18,7 @@ public class CrossyCamera : MonoBehaviour
     void LateUpdate()
     {
         // Mueve la cámara hacia adelante constantemente en el eje Z (o el que prefieras)
-        transform.position += Vector3.left * scrollSpeed * Time.deltaTime;
+        transform.position += Vector3.right * scrollSpeed * Time.deltaTime;
 
         // Opcional: Si quieres que también siga al jugador lateralmente (eje X)
         if (player != null)
