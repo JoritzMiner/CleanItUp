@@ -27,9 +27,9 @@ public class Example : MonoBehaviour
         {
             scrollSpeed = 0f;
 
-           if (GameManager.Instance != null)
+           if (GameManagerGAMEOVER.Instance != null)
             {
-                GameManager.Instance.GameOver();
+                GameManagerGAMEOVER.Instance.GameOver();
             }
            
         }
