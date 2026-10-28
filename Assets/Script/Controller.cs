@@ -12,9 +12,9 @@ public class Controller : MonoBehaviour
     private GameManager gameManager;
     public enum GameState
     {
-        Ready,
-        Moving,
-        Dead
+        Menu,
+        Playing,
+        Death
     }
     private GameState gameState;
     public bool MAdelante = true;
@@ -43,7 +43,7 @@ public class Controller : MonoBehaviour
     public void OnLeft(InputValue input)
     {
        
-        if (input.isPressed && MIzquierda && gameState==GameState.Ready)
+        if (input.isPressed && MIzquierda && gameState==GameState.Playing)
         {
             StartCoroutine(MovimientoSmooth(0f, MovementHorizontal));
         }
@@ -54,7 +54,7 @@ public class Controller : MonoBehaviour
     public void OnRigth(InputValue input)
     {
 
-        if (input.isPressed && MDerecha && gameState == GameState.Ready)
+        if (input.isPressed && MDerecha && gameState == GameState.Playing)
         {
             StartCoroutine(MovimientoSmooth(0f, -MovementHorizontal));
         }
@@ -66,7 +66,7 @@ public class Controller : MonoBehaviour
     }
     public void OnFordward(InputValue input)
     {
-        if (input.isPressed && MAdelante && gameState == GameState.Ready)
+        if (input.isPressed && MAdelante && gameState == GameState.Playing)
         {
             StartCoroutine(MovimientoSmooth(MovementVertical, 0));
         }
@@ -77,7 +77,7 @@ public class Controller : MonoBehaviour
     public void OnBackwards(InputValue input)
     {
 
-        if (input.isPressed && MAtras && gameState == GameState.Ready)
+        if (input.isPressed && MAtras && gameState == GameState.Playing)
         {
             StartCoroutine(MovimientoSmooth(-MovementVertical, 0));
         }

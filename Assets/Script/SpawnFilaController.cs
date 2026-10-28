@@ -12,6 +12,7 @@ public class SpawnFilaController : MonoBehaviour
     public GameObject WaterPrefab;
     public GameObject RoadPrefab;
 
+
     private void Start()
     {
         CreatePool(InicioPrefab, 1);

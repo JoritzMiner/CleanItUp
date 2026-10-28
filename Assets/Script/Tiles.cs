@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Road : MonoBehaviour
+public class Tiles : MonoBehaviour
 {
     [SerializeField]
     private SpawnFilaController spawnFilaController;
@@ -8,17 +8,24 @@ public class Road : MonoBehaviour
     [SerializeField]
     private GameObject camara;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         spawnFilaController = FindFirstObjectByType<SpawnFilaController>();
+        Spawnear();
         camara = GameObject.Find("Main Camera");
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if(camara.transform.position.x > this.transform.position.x)
         {
+            //Debug.LogError("016 Me voy " + this.gameObject.name);
             spawnFilaController.RemoveObject(gameObject);
         }
+    }
+
+    public virtual void Spawnear()
+    {
+
     }
 }

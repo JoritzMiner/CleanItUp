@@ -34,6 +34,7 @@ public class CrossyCamera : MonoBehaviour
 
             transform.position = targetPosition;
         }
+        
     }
 }
 
