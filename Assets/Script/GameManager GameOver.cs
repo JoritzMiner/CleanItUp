@@ -1,11 +1,10 @@
 using UnityEngine;
-<<<<<<< HEAD
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public class GameManager : MonoBehaviour 
+public class GameManager : MonoBehaviour
 {
-    public static  GameManager Instance;
+    public static GameManager Instance;
 
     public GameObject gameOverPanel;
     public TextMeshProUGUI gameOverText;
@@ -50,17 +49,17 @@ public class GameManager : MonoBehaviour
     {
         if (gameOverActivo)
         {
-            if(Input.GetKeyUp(KeyCode.R))
+            if (Input.GetKeyUp(KeyCode.R))
             {
                 ReiniciarEscena();
             }
 
-            if(Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.M))
+            if (Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyUp(KeyCode.M))
             {
                 IrAlMenu();
             }
 
-        } 
+        }
 
 
     }
@@ -69,14 +68,14 @@ public class GameManager : MonoBehaviour
     {
         if (gameOverActivo) return;
 
-        gameOverActivo =true;
+        gameOverActivo = true;
 
         if (gameOverPanel != null)
         {
             gameOverPanel.SetActive(true);
         }
 
-        if(gameOverText != null)
+        if (gameOverText != null)
         {
             TextoAleatorio();
         }
@@ -86,12 +85,12 @@ public class GameManager : MonoBehaviour
     {
         valorAleatorio = Random.Range(1, 10);
 
-        if(valorAleatorio == 1)
+        if (valorAleatorio == 1)
         {
             gameOverText.text = "Te queria ver triunfar pero no me daras el gusto🗣️🗣️🔥🔥";
         }
 
-        if(valorAleatorio == 2)
+        if (valorAleatorio == 2)
         {
             gameOverText.text = "Amar tambien es dejar ir🗣️🗣️🔥";
         }
@@ -135,20 +134,22 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene("Menu");
-=======
-
-public class NewMonoBehaviourScript : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
     }
 
-    // Update is called once per frame
-    void Update()
+
+public class NewMonoBehaviourScript : MonoBehaviour
     {
-        
->>>>>>> 386792fced8ec52bdbf40f68cca30205c2e694bf
+
+        void Start()
+        {
+
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+
+        }
     }
 }
