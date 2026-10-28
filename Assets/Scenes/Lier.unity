@@ -8587,7 +8587,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManagerPuntuacion
   pointsText: {fileID: 1707183794}
   points: 0
-  Player: {fileID: 1451570998}
+  Player: {fileID: 1451570991}
 --- !u!4 &228792345
 Transform:
   m_ObjectHideFlags: 0

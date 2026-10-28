@@ -8,11 +8,12 @@ public class GameManagerPuntuacion : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public TMP_Text pointsText;
     public int points = 0;
-    public Transform Player;
+    public GameObject Player;
 
 
     private void Start()
     {
+        Player = FindFirstObjectByType<Controller>().gameObject;
         pointsText.text = "Puntuacion: " + points;
 
     }
