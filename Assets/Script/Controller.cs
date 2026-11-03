@@ -23,7 +23,6 @@ public class Controller : MonoBehaviour
     public bool MIzquierda = true;
     public Rigidbody rb;
 
-    private bool noHayPared = true; //si hay pared = false, si no hay pared = true
     private bool enMovimiento = false; //si se mueve el player = true , si no se mueve = false
     private void Start()
     {
@@ -87,26 +86,43 @@ public class Controller : MonoBehaviour
 
     }
 
-    private IEnumerator MovimientoSmooth(float moverX, float moverZ) 
+    private IEnumerator MovimientoSmooth(float moverX, float moverZ)
     {
-       if(!enMovimiento)
-        {
-            enMovimiento = true;
-            Vector3 Gotoposition = new Vector3(transform.position.x + moverX, transform.position.y, transform.position.z + moverZ);
-            float elapsedTime = 0;
-            float waitTime = 0.2f;
-            Vector3 currentPos = transform.position;
-            while (elapsedTime < waitTime)
-            {
-                transform.position = Vector3.Lerp(currentPos, Gotoposition, (elapsedTime / waitTime));
-                elapsedTime += Time.deltaTime;
+        Debug.LogError("021 Me muevo aaaa ");
+        if (enMovimiento)
+            yield break;
 
-                // Yield here
-                yield return null;
-            }
-            enMovimiento = false;
+        enMovimiento = true;
+
+        Vector3 currentPos = transform.position;
+
+        Vector3 GoToPosition = currentPos + new Vector3(
+            moverX, 0f, moverZ
+        );
+
+        float elapsedTime = 0f;
+        float waitTime = 0.2f;
+
+        while (elapsedTime < waitTime)
+        {
+            float t = elapsedTime / waitTime;
+
+            transform.position = Vector3.Lerp(
+                currentPos,
+                GoToPosition,
+                t
+            );
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
-                 
-       
+
+
+        transform.position = GoToPosition;
+
+        Debug.Log("Posición final: " +
+            transform.position.ToString("F5"));
+
+        enMovimiento = false;
     }
 }
