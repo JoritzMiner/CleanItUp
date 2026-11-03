@@ -2,9 +2,9 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public class GameManagerGameOver: MonoBehaviour
+public class GameManagerGAMEOVER : MonoBehaviour
 {
-    public static GameManagerGameOver Instance;
+    public static GameManagerGAMEOVER Instance;
 
     public GameObject gameOverPanel;
     public TextMeshProUGUI gameOverText;
@@ -58,7 +58,10 @@ public class GameManagerGameOver: MonoBehaviour
             {
                 IrAlMenu();
             }
+
         }
+
+
     }
 
     public void GameOver()
@@ -97,11 +100,11 @@ public class GameManagerGameOver: MonoBehaviour
         }
         if (valorAleatorio == 4)
         {
-            gameOverText.text = "Estas cerrando bocas, sigue asi";
+            gameOverText.text = "¡Estas cerrando bocas, sigue asi!";
         }
         if (valorAleatorio == 5)
         {
-            gameOverText.text = "Me pongo el sombrero";
+            gameOverText.text = "¡Me pongo el sombrero!";
         }
         if (valorAleatorio == 6)
         {
@@ -113,11 +116,11 @@ public class GameManagerGameOver: MonoBehaviour
         }
         if (valorAleatorio == 8)
         {
-            gameOverText.text = "Pintar no te gusta?";
+            gameOverText.text = "Y pintar no te gusta?";
         }
         if (valorAleatorio == 9)
         {
-            gameOverText.text = "Tienes talento, solo falta buscarlo";
+            gameOverText.text = "¡Tienes talento, solo falta buscarlo!";
         }
     }
 
