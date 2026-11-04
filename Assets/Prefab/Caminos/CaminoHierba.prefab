@@ -346,7 +346,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5417592214633117533}
   - component: {fileID: 7752164022382838641}
-  - component: {fileID: -2387681956820604185}
+  - component: {fileID: 8085051457057146321}
   m_Layer: 0
   m_Name: CaminoHierba
   m_TagString: Untagged
@@ -389,7 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PrefabIdentifier
   prefab: {fileID: 0}
---- !u!114 &-2387681956820604185
+--- !u!114 &8085051457057146321
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -398,9 +398,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2305953895037603798}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ea7e6e915f54e848affebd513289b1b, type: 3}
+  m_Script: {fileID: 11500000, guid: a666895a9e216fa45b2a1c3cd58aaa86, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Road
+  m_EditorClassIdentifier: Assembly-CSharp::GrassTile
+  spawnFilaController: {fileID: 0}
+  camara: {fileID: 0}
+  ParedPrefab: {fileID: 3130409562805395968, guid: c9f078cf6eac0de4f96cac2d015a9022, type: 3}
+  valorAleatorio: 0
 --- !u!1 &2715233300966803317
 GameObject:
   m_ObjectHideFlags: 0

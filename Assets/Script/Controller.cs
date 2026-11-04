@@ -34,20 +34,26 @@ public class Controller : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        
+
     }
-    public void CheckState(GameState gameState)
+
+    public void EstadoMuerto()
     {
-        this.gameState = gameState;
+        gameState = GameState.Dead;
+    }
+    public void EstadoListo()
+    {
+        gameState = GameState.Ready;
     }
     public void OnLeft(InputValue input)
     {
-       
-        if (input.isPressed && MIzquierda && gameState==GameState.Ready)
+
+        if (input.isPressed && MIzquierda && gameState == GameState.Ready)
         {
             StartCoroutine(MovimientoSmooth(0f, MovementHorizontal));
         }
-        else {
+        else
+        {
         }
 
     }
@@ -61,7 +67,7 @@ public class Controller : MonoBehaviour
         else
         {
         }
- 
+
 
     }
     public void OnFordward(InputValue input)
@@ -87,26 +93,41 @@ public class Controller : MonoBehaviour
 
     }
 
-    private IEnumerator MovimientoSmooth(float moverX, float moverZ) 
-    {
-       if(!enMovimiento)
-        {
-            enMovimiento = true;
-            Vector3 Gotoposition = new Vector3(transform.position.x + moverX, transform.position.y, transform.position.z + moverZ);
-            float elapsedTime = 0;
-            float waitTime = 0.2f;
-            Vector3 currentPos = transform.position;
-            while (elapsedTime < waitTime)
-            {
-                transform.position = Vector3.Lerp(currentPos, Gotoposition, (elapsedTime / waitTime));
-                elapsedTime += Time.deltaTime;
 
-                // Yield here
-                yield return null;
-            }
-            enMovimiento = false;
+    private IEnumerator MovimientoSmooth(float moverX, float moverZ)
+    {
+        if (enMovimiento)
+            yield break;
+
+        enMovimiento = true;
+
+        Vector3 currentPos = transform.position;
+
+        Vector3 GoToPosition = currentPos + new Vector3(
+            moverX, 0f, moverZ
+        );
+
+        float elapsedTime = 0f;
+        float waitTime = 0.2f;
+
+        while (elapsedTime < waitTime)
+        {
+            float t = elapsedTime / waitTime;
+
+            transform.position = Vector3.Lerp(
+                currentPos,
+                GoToPosition,
+                t
+            );
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
-                 
-       
+
+
+        transform.position = GoToPosition;
+
+
+        enMovimiento = false;
     }
 }
