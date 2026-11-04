@@ -3078,10 +3078,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4add1705145397449db9d7eb94198d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrossyCamera
-  player: {fileID: 1451570998}
+  player: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
   scrollSpeed: 2
-  posicionX: 0
 --- !u!114 &91035610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8588,6 +8587,7 @@ MonoBehaviour:
   pointsText: {fileID: 1707183794}
   points: 0
   Player: {fileID: 1451570991}
+  newPoints: 0
 --- !u!4 &228792345
 Transform:
   m_ObjectHideFlags: 0
@@ -46677,7 +46677,7 @@ Transform:
   m_GameObject: {fileID: 1451570991}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.89603496, z: 3.58}
+  m_LocalPosition: {x: 16, y: 0.89603496, z: 3.58}
   m_LocalScale: {x: 0.75413, y: 0.79207, z: 0.7375}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -54167,7 +54167,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Puntuacion: '
+  m_text: 'Puntuacion:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 64a2667d29cf1c1419c83ba89c9de0ec, type: 2}
   m_sharedMaterial: {fileID: -7714615563628798998, guid: 64a2667d29cf1c1419c83ba89c9de0ec, type: 2}
@@ -54233,7 +54233,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -735.62714, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -59851,8 +59851,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManagerPuntuacion
   pointsText: {fileID: 1707183794}
-  points: 0
-  Player: {fileID: 0}
+  points: 5
+  Player: {fileID: 1451570991}
+  newPoints: 0
 --- !u!1 &1956572057
 GameObject:
   m_ObjectHideFlags: 0
