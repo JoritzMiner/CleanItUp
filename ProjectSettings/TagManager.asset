@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Pared
   - Gaviota
+  - TriggerMuro
+  - Monedas
   layers:
   - Default
   - TransparentFX
