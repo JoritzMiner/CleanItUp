@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
         Player.GetComponent<Controller>().EstadoListo();
 
         gameOverPanel.SetActive(false);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(1);
     }
 
     public void IrAlMenu()
