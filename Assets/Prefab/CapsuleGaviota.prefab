@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1710171603075244766}
   - component: {fileID: 8815789342170584631}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: CapsuleGaviota
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2891496336627352898}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -2.31, y: 1.57, z: -0.32}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3095954706989937710
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 26f54843c2a6684418cd3e6c5bf8c846, type: 2}
+  - {fileID: 2100000, guid: 6a8b610ac8875884798d3bc0590e8c2b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -128,4 +128,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   gaviota_Transform: {fileID: 0}
-  scrollSpeed: 2
+  scrollSpeed: 10
+  Player: {fileID: 0}
