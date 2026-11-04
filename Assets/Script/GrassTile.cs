@@ -27,7 +27,7 @@ public class GrassTile : Tiles
 
     private void CreatePool(GameObject prefab, int poolSize)
     {
-        Debug.Log("018 Create pool");
+        //Debug.Log("018 Create pool");
         Queue<GameObject> newPool = new Queue<GameObject>();
         for (int i = 0; i < poolSize; i++)
         {
@@ -62,12 +62,12 @@ public class GrassTile : Tiles
 
     public override void Spawnear()
     {
-        valorAleatorio = Random.Range(0, 4);
+        valorAleatorio = Random.Range(0, 3);
         int posicionAleatoria;
         for (int i = 0; i <= valorAleatorio; i ++)
         {
             posicionAleatoria = Random.Range(0, 7);
-            Debug.LogError("020 Me spawneo " + ParedPrefab.name + " en la posicion " + posicionAleatoria);
+            //Debug.LogError("020 Me spawneo " + ParedPrefab.name + " en la posicion " + posicionAleatoria);
             ActivateObject(ParedPrefab, new Vector3(0, 1, posicionAleatoria - 1.1417f));
         }
     }

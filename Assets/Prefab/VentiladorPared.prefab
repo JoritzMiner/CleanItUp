@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -4900146723650432445}
   m_Layer: 0
   m_Name: VentiladorPared
-  m_TagString: Untagged
+  m_TagString: TriggerMuro
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 2493576173829030506}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Pared
+  m_TagString: TriggerMuro
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

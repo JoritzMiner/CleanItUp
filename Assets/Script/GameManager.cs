@@ -82,26 +82,29 @@ public class GameManager : MonoBehaviour
 
         if (reiniciarButton != null)
         {
-            reiniciarButton.onClick.AddListener(ReiniciarEscena);
+            reiniciarButton.onClick.AddListener(() => ReiniciarEscena());
         }
         if (menuButton != null)
         {
-            menuButton.onClick.AddListener(IrAlMenu);
+            menuButton.onClick.AddListener(() => IrAlMenu());
         }
     }
 
     public void ReiniciarEscena()
     {
         Time.timeScale = 1f;
+        Debug.Log("024 Reinicia");
         gameState = GameState.Playing;
+        Player.GetComponent<Controller>().EstadoListo();
+
+        gameOverPanel.SetActive(false);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void IrAlMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("Menu");
-        gameState = GameState.Menu;
+        SceneManager.LoadScene(0);
     }
 
     private void FixedUpdate()
@@ -158,7 +161,10 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.LogError("017 Me he matado paco");
+        Player.transform.position = new Vector3(camara.transform.position.x + 1.5f, 0, 0);
+        Player.GetComponent<Controller>().EstadoMuerto();
         gameState = GameState.Death;
+        //Time.timeScale = 0f;
 
         camara.GetComponent<CrossyCamera>().scrollSpeed = 0;
     }

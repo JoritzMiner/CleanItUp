@@ -12,9 +12,9 @@ public class Controller : MonoBehaviour
     private GameManager gameManager;
     public enum GameState
     {
-        Menu,
-        Playing,
-        Death
+        Ready,
+        Moving,
+        Dead
     }
     private GameState gameState;
     public bool MAdelante = true;
@@ -23,6 +23,7 @@ public class Controller : MonoBehaviour
     public bool MIzquierda = true;
     public Rigidbody rb;
 
+    private bool noHayPared = true; //si hay pared = false, si no hay pared = true
     private bool enMovimiento = false; //si se mueve el player = true , si no se mueve = false
     private void Start()
     {
@@ -33,39 +34,45 @@ public class Controller : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        
+
     }
-    public void CheckState(GameState gameState)
+
+    public void EstadoMuerto()
     {
-        this.gameState = gameState;
+        gameState = GameState.Dead;
+    }
+    public void EstadoListo()
+    {
+        gameState = GameState.Ready;
     }
     public void OnLeft(InputValue input)
     {
-       
-        if (input.isPressed && MIzquierda && gameState==GameState.Playing)
+
+        if (input.isPressed && MIzquierda && gameState == GameState.Ready)
         {
             StartCoroutine(MovimientoSmooth(0f, MovementHorizontal));
         }
-        else {
+        else
+        {
         }
 
     }
     public void OnRigth(InputValue input)
     {
 
-        if (input.isPressed && MDerecha && gameState == GameState.Playing)
+        if (input.isPressed && MDerecha && gameState == GameState.Ready)
         {
             StartCoroutine(MovimientoSmooth(0f, -MovementHorizontal));
         }
         else
         {
         }
- 
+
 
     }
     public void OnFordward(InputValue input)
     {
-        if (input.isPressed && MAdelante && gameState == GameState.Playing)
+        if (input.isPressed && MAdelante && gameState == GameState.Ready)
         {
             StartCoroutine(MovimientoSmooth(MovementVertical, 0));
         }
@@ -76,7 +83,7 @@ public class Controller : MonoBehaviour
     public void OnBackwards(InputValue input)
     {
 
-        if (input.isPressed && MAtras && gameState == GameState.Playing)
+        if (input.isPressed && MAtras && gameState == GameState.Ready)
         {
             StartCoroutine(MovimientoSmooth(-MovementVertical, 0));
         }
@@ -86,9 +93,9 @@ public class Controller : MonoBehaviour
 
     }
 
+
     private IEnumerator MovimientoSmooth(float moverX, float moverZ)
     {
-        Debug.LogError("021 Me muevo aaaa ");
         if (enMovimiento)
             yield break;
 
@@ -120,8 +127,6 @@ public class Controller : MonoBehaviour
 
         transform.position = GoToPosition;
 
-        Debug.Log("Posición final: " +
-            transform.position.ToString("F5"));
 
         enMovimiento = false;
     }
