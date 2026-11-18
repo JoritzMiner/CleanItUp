@@ -18,7 +18,7 @@ public class SpawnFilaController : MonoBehaviour
         CreatePool(InicioPrefab, 1);
         CreatePool(GrassPrefab, 14);
         CreatePool(WaterPrefab, 6);
-        CreatePool(RoadPrefab, 8);
+        CreatePool(RoadPrefab, 12);
     }
     private void CreatePool(GameObject prefab, int poolSize)
     {

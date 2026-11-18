@@ -11,11 +11,13 @@ public class GameManagerPuntuacion : MonoBehaviour
     public float points = 20;
     public GameObject Player;
     public float newPoints = 0;
+    public int puntuacion = 0;
 
     private void Start()
     {
         Player = FindFirstObjectByType<Controller>().gameObject;
-        pointsText.text = "Puntuacion: " + points.ToString();
+        pointsText.text = "Puntuacion: " + puntuacion.ToString();
+
 
     }
     void Update()
@@ -31,7 +33,7 @@ public class GameManagerPuntuacion : MonoBehaviour
     public void AnadirPuntos()
     {
         points = (Player.transform.position.x)/* / 1.5f) * 20*/;
-        pointsText.text = "Puntuacion: " + points.ToString();
+        pointsText.text = "Puntuacion: " + puntuacion.ToString();
         newPoints = points;
 
     }

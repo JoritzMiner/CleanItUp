@@ -44,6 +44,10 @@ public class GameManager : MonoBehaviour
 
     private bool gameOverActivo = false;
 
+    public TMP_Text pointsText;
+    public int puntuacion = 0;
+    public float distanciaMasAlejada = -5;
+
     private void Awake()
     {
         CreateInstane();//para Game Over
@@ -51,6 +55,8 @@ public class GameManager : MonoBehaviour
 
         spawnFilaController = FindFirstObjectByType<SpawnFilaController>();
         gameState = GameState.Playing;
+        pointsText.text = "Puntuacion: " + puntuacion.ToString();
+        distanciaMasAlejada = Player.transform.position.x;
         //spawnFilaController.ActivateObject(inicioPrefab, new Vector3(UltimaPos, 0, 0));
         //UltimaPos = 1.5f;
     }
@@ -90,10 +96,34 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void CheckDistancia()
+    {
+        Debug.LogWarning(distanciaMasAlejada +" 019 Player: "+ Player.transform.position.x);
+
+        if (Player.transform.position.x > distanciaMasAlejada )
+        {
+            Debug.LogWarning("Puntos 019 : " + puntuacion);
+            distanciaMasAlejada = Player.gameObject.transform.position.x;
+
+            puntuacion += 1;
+            ActualizarPuntos();
+        }
+        else
+        {
+
+        }
+    }
+ 
+    public void ActualizarPuntos()
+    {
+        pointsText.text = "Puntuacion: " + puntuacion;
+    }
+
     public void ReiniciarEscena()
     {
         Time.timeScale = 1f;
-        Debug.Log("024 Reinicia");
+
+        puntuacion = 0;
         gameState = GameState.Playing;
         Player.GetComponent<Controller>().EstadoListo();
 

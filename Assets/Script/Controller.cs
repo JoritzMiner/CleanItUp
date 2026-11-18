@@ -75,6 +75,9 @@ public class Controller : MonoBehaviour
         if (input.isPressed && MAdelante && gameState == GameState.Ready)
         {
             StartCoroutine(MovimientoSmooth(MovementVertical, 0));
+            Debug.LogWarning(" 0191 " + player.gameObject.transform.position.x);
+            GameManager.Instance.CheckDistancia();
+
         }
         else
         {
