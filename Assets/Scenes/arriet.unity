@@ -359,6 +359,7 @@ GameObject:
   - component: {fileID: 237411314}
   - component: {fileID: 237411313}
   - component: {fileID: 237411317}
+  - component: {fileID: 237411318}
   m_Layer: 0
   m_Name: Gondola
   m_TagString: Untagged
@@ -474,6 +475,20 @@ MonoBehaviour:
   pointA: {fileID: 1407689574}
   pointB: {fileID: 1633349155}
   plataforma: {fileID: 237411316}
+  velocidad: 1
+--- !u!114 &237411318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237411312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 076ee3a884757854785c6d8828f37202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Plataforma
+  objeto: {fileID: 113246256}
 --- !u!1 &240866383
 GameObject:
   m_ObjectHideFlags: 0
