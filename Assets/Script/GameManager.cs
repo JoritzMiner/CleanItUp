@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     public int puntuacion = 0;
     public float distanciaMasAlejada = -5;
 
+
     private void Awake()
     {
         CreateInstane();//para Game Over
@@ -57,8 +58,12 @@ public class GameManager : MonoBehaviour
         gameState = GameState.Playing;
         pointsText.text = "Puntuacion: " + puntuacion.ToString();
         distanciaMasAlejada = Player.transform.position.x;
+        Player.GetComponent<Controller>().EstadoListo();
+
         //spawnFilaController.ActivateObject(inicioPrefab, new Vector3(UltimaPos, 0, 0));
         //UltimaPos = 1.5f;
+
+
     }
 
     private void Start()
@@ -190,7 +195,6 @@ public class GameManager : MonoBehaviour
             TextoAleatorio();
         }
 
-        Debug.LogError("017 Me he matado paco");
         Player.transform.position = new Vector3(camara.transform.position.x + 1.5f, 0, 0);
         Player.GetComponent<Controller>().EstadoMuerto();
         gameState = GameState.Death;

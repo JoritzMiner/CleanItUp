@@ -10,7 +10,13 @@ public class Collision : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("TriggerMuro")) 
         {
-            Debug.Log("ColisionaMuro" + NombreColision);
+            ComprobarColision(false);
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag.Equals("TriggerMuro"))
+        {
             ComprobarColision(false);
         }
     }
@@ -18,7 +24,6 @@ public class Collision : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("TriggerMuro"))
         {
-            Debug.Log("SaleColision" + NombreColision);
             ComprobarColision(true);
         }
     }

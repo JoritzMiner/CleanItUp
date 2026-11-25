@@ -404,6 +404,7 @@ MonoBehaviour:
   spawnFilaController: {fileID: 0}
   camara: {fileID: 0}
   ParedPrefab: {fileID: 3130409562805395968, guid: c9f078cf6eac0de4f96cac2d015a9022, type: 3}
+  Moneda: {fileID: 4906683787633605332, guid: ad74fe3ba89a0f44196ba7a379023ea3, type: 3}
   valorAleatorio: 0
 --- !u!1 &2715233300966803317
 GameObject:

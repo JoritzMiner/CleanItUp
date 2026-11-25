@@ -18,12 +18,12 @@ public class Destruir : MonoBehaviour
         gaviota_Transform = this.transform;
         if(this.name == "CapsuleMosca(Clone)")
         {
-            moveSpeed = Random.Range(5, scrollSpeed);
+            moveSpeed = Random.Range(3, scrollSpeed);
 
         }
         else if (this.name == "CapsuleGaviota(Clone)")
         {
-            moveSpeed = Random.Range(3, scrollSpeed);
+            moveSpeed = Random.Range(5, scrollSpeed);
 
         }
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -32,7 +32,7 @@ public class Destruir : MonoBehaviour
     public void PosicionInicial(Vector3 posiciontile)
     {
         posicionInicial = posiciontile;
-        Debug.LogError("015 " + posicionInicial);
+        //Debug.LogError("015 " + posicionInicial);
 
     }
 
@@ -41,7 +41,7 @@ public class Destruir : MonoBehaviour
         gaviota_Transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
         if(gaviota_Transform.position.z > 8f)
         {
-            Debug.Log("015 " + posicionInicial);
+            //Debug.Log("015 " + posicionInicial);
             ResetPOs();
         }
         if(Player.transform.position.x == gaviota_Transform.position.x && Player.transform.position.z == gaviota_Transform.position.z)

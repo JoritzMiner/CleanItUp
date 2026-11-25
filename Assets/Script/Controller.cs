@@ -16,7 +16,7 @@ public class Controller : MonoBehaviour
         Moving,
         Dead
     }
-    private GameState gameState;
+    private GameState gameState = GameState.Ready;
     public bool MAdelante = true;
     public bool MAtras = true;
     public bool MDerecha = true;
@@ -31,11 +31,14 @@ public class Controller : MonoBehaviour
         MAdelante = true;
         MAtras = true;
         MDerecha = true;
+
+        StartCoroutine(AnimacionIdle());
     }
     private void FixedUpdate()
     {
 
     }
+
 
     public void EstadoMuerto()
     {
@@ -45,6 +48,7 @@ public class Controller : MonoBehaviour
     {
         gameState = GameState.Ready;
     }
+
     public void OnLeft(InputValue input)
     {
 
@@ -75,8 +79,9 @@ public class Controller : MonoBehaviour
         if (input.isPressed && MAdelante && gameState == GameState.Ready)
         {
             StartCoroutine(MovimientoSmooth(MovementVertical, 0));
-            Debug.LogWarning(" 0191 " + player.gameObject.transform.position.x);
+            //Debug.LogWarning(" 0191 " + player.gameObject.transform.position.x);
             GameManager.Instance.CheckDistancia();
+            StartCoroutine(AnimacionIdle());
 
         }
         else
@@ -95,6 +100,52 @@ public class Controller : MonoBehaviour
         }
 
     }
+    private IEnumerator AnimacionIdle()
+    {
+        float elapsedTime = 0f;
+        float tiempo = 0f;
+
+        Vector3 idleScale = transform.localScale;
+        Vector3 GoToScale = transform.localScale * 0.8f;
+
+        while (gameState == GameState.Ready)
+        {
+
+
+            while (elapsedTime < 0.5)
+            {
+                Debug.LogError(elapsedTime);
+                transform.localScale = Vector3.Lerp(
+                    idleScale,
+                    GoToScale,
+                    elapsedTime
+                    );
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            transform.localScale = GoToScale;
+            elapsedTime = 0f;
+
+            while (elapsedTime < 0.5)
+            {
+
+                transform.localScale = Vector3.Lerp(
+                    GoToScale,
+                    idleScale,
+                    elapsedTime
+                    );
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            transform.localScale = idleScale;
+            elapsedTime = 0f;
+            tiempo += Time.deltaTime;
+        }
+
+
+    }
+
 
 
     private IEnumerator MovimientoSmooth(float moverX, float moverZ)

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GrassTile : Tiles
 {
     public GameObject ParedPrefab;
+    public GameObject Moneda;
 
     private Dictionary<GameObject, Queue<GameObject>> pools = new Dictionary<GameObject, Queue<GameObject>>();
 
@@ -16,6 +17,7 @@ public class GrassTile : Tiles
     protected override void Awake()
     {
         CreatePool(ParedPrefab, 4);
+        CreatePool(Moneda, 1);
 
         base.Awake();
     }
@@ -64,11 +66,33 @@ public class GrassTile : Tiles
     {
         valorAleatorio = Random.Range(0, 3);
         int posicionAleatoria;
+        int[] posBloques = new int[3];
         for (int i = 0; i <= valorAleatorio; i ++)
         {
             posicionAleatoria = Random.Range(0, 7);
+            posBloques[i] = posicionAleatoria;
             //Debug.LogError("020 Me spawneo " + ParedPrefab.name + " en la posicion " + posicionAleatoria);
             ActivateObject(ParedPrefab, new Vector3(0, 1, posicionAleatoria - 1.1417f));
+        }
+        bool monedaSpawn = true;
+        int contador = 0;
+        while (monedaSpawn)
+        {
+            contador = 0;
+            posicionAleatoria = Random.Range(0, 7);
+            for(int i = 0;i <= valorAleatorio; i ++)
+            {
+                if(posicionAleatoria == posBloques[i])
+                {
+                    contador++;
+                }
+            }
+
+            if(contador == 0)
+            {
+                ActivateObject(Moneda, new Vector3(0, 1, posicionAleatoria - 1.1417f));
+                monedaSpawn=false;
+            }
         }
     }
 
