@@ -1,48 +1,48 @@
-
 using UnityEngine;
 
 public class Plataforma : MonoBehaviour
 {
     public GameObject objeto;
 
+    private bool transportando;
+
     private void OnTriggerEnter(Collider other)
     {
-        
-        if (other.gameObject == objeto)
+        if (objeto != null &&
+            (other.gameObject == objeto ||
+             other.transform.IsChildOf(objeto.transform)))
         {
-            
             objeto.transform.SetParent(transform, true);
+            transportando = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == objeto)
-        {
-            
-            objeto.transform.SetParent(null, true);
+        if (!transportando || objeto == null)
+            return;
 
-            
+        if (other.gameObject == objeto ||
+            other.transform.IsChildOf(objeto.transform))
+        {
             Vector3 posicion = objeto.transform.position;
 
-            
-            float[] posicionesZ = { -3f, -2f, -1f, 1f, 2f, 3f };
+            objeto.transform.SetParent(null, true);
+            transportando = false;
 
-            
-            float zCercana = posicionesZ[0];
+            float[] nivelesZ = { -3f, -2f, -1f, 1f, 2f, 3f };
+            float zCercana = nivelesZ[0];
 
-            foreach (float z in posicionesZ)
+            foreach (float nivel in nivelesZ)
             {
-                if (Mathf.Abs(posicion.z - z) <
+                if (Mathf.Abs(posicion.z - nivel) <
                     Mathf.Abs(posicion.z - zCercana))
                 {
-                    zCercana = z;
+                    zCercana = nivel;
                 }
             }
 
-            
             posicion.z = zCercana;
-
             objeto.transform.position = posicion;
         }
     }
